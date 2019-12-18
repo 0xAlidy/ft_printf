@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/10 02:49:43 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:46:58 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 16:52:33 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		char_format(t_flags tab, char c)
+int		ft_char_format(t_flags tab, char c)
 {
 	int		i;
 	int		size;
@@ -37,7 +37,7 @@ int		char_format(t_flags tab, char c)
 	return (size);
 }
 
-void	write_str(int neg, int c, char *str, int size)
+void	ft_write_str(int neg, int c, char *str, int size)
 {
 	if (neg == 0)
 		while (--c > 0)
@@ -48,7 +48,7 @@ void	write_str(int neg, int c, char *str, int size)
 			write(1, " ", 1);
 }
 
-int		str_format(t_flags tab, char *str)
+int		ft_str_format(t_flags tab, char *str)
 {
 	int		size;
 	int		c;
@@ -68,7 +68,7 @@ int		str_format(t_flags tab, char *str)
 		c = tab.width - size;
 	res = size + c;
 	c++;
-	write_str(tab.neg, c, str, size);
+	ft_write_str(tab.neg, c, str, size);
 	if (ok == 1)
 		free(str);
 	return (res);

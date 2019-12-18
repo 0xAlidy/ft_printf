@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   un_format.c                                      .::    .:/ .      .::   */
+/*   ft_un_format.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/10 09:11:34 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:47:02 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:01:33 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,7 +42,7 @@ char			*ft_litoa(unsigned int n)
 	return (str);
 }
 
-char			*test_un(t_flags tab, unsigned int nb)
+char			*ft_test_un(t_flags tab, unsigned int nb)
 {
 	char *numb;
 
@@ -60,7 +60,7 @@ char			*test_un(t_flags tab, unsigned int nb)
 	return (numb);
 }
 
-void			init_un(t_flags tab, int size, int *zero, int *c)
+void			ft_init_un(t_flags tab, int size, int *zero, int *c)
 {
 	if (tab.precision - size > 0)
 		(*zero) = tab.precision - size;
@@ -68,7 +68,7 @@ void			init_un(t_flags tab, int size, int *zero, int *c)
 		(*c) = tab.width - size - (*zero);
 }
 
-void			init_size(int *size, int nb, t_flags t)
+void			ft_init_size(int *size, int nb, t_flags t)
 {
 	if (nb == 0 && t.precision == 0 && t.point == 1)
 		(*size) = 0;
@@ -76,7 +76,7 @@ void			init_size(int *size, int nb, t_flags t)
 		(*size) = ft_longlen(nb);
 }
 
-int				un_format(t_flags tab, unsigned int nb)
+int				ft_un_format(t_flags tab, unsigned int nb)
 {
 	int		size;
 	int		c;
@@ -86,19 +86,19 @@ int				un_format(t_flags tab, unsigned int nb)
 
 	zero = 0;
 	c = 0;
-	init_size(&size, nb, tab);
-	init_un(tab, size, &zero, &c);
+	ft_init_size(&size, nb, tab);
+	ft_init_un(tab, size, &zero, &c);
 	res = size + zero + c;
-	numb = test_un(tab, nb);
+	numb = ft_test_un(tab, nb);
 	if (tab.neg == 0)
 	{
-		write_flags(zero, c, tab.zero, 1);
+		ft_write_flags(zero, c, tab.zero, 1);
 		write(1, numb, size);
 	}
 	else
 	{
-		write_justify_flags(zero, numb, size, 1);
-		write_space(c);
+		ft_write_justify_flags(zero, numb, size, 1);
+		ft_write_space(c);
 	}
 	free(numb);
 	return (res);

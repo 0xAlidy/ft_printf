@@ -6,23 +6,23 @@
 #    By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/11/28 10:24:13 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2019/12/17 13:58:50 by alidy       ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/18 11:46:38 by alidy       ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME		=		libftprintf.a
 
-HEADERS		=		includes/
+HEADERS		=		includes/ft_printf.h
 
-SRCS 		=		src/ft_printf.c	  	 \
-					src/ft_itoa_base.c   \
-					src/get_str_format.c \
-					src/int_format.c     \
-					src/parsing_flags.c  \
-					src/str_format.c     \
-					src/un_format.c      \
-					src/hexa_format.c    \
+SRCS 		=		src/ft_printf.c	  	 	\
+					src/ft_itoa_base.c   	\
+					src/ft_get_str_format.c \
+					src/ft_int_format.c     \
+					src/ft_parsing_flags.c  \
+					src/ft_str_format.c     \
+					src/ft_un_format.c      \
+					src/ft_hexa_format.c    \
 
 FLAGS 		= 		-Wall -Wextra -Werror
 

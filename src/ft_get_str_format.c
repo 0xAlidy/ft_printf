@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_str_format.c                                 .::    .:/ .      .::   */
+/*   ft_get_str_format.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 03:34:35 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:46:43 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/18 11:50:32 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*init_join(char *s1, char *s2)
+char	*ft_init_join(char *s1, char *s2)
 {
 	int		size_s1;
 	int		size_s2;
@@ -33,7 +33,7 @@ char	*ft_fstrjoin(char *s1, char *s2)
 	int		j;
 	char	*str;
 
-	if (!(str = init_join(s1, s2)))
+	if (!(str = ft_init_join(s1, s2)))
 		return (0);
 	i = 0;
 	j = 0;
@@ -54,7 +54,7 @@ char	*ft_fstrjoin(char *s1, char *s2)
 	return (str);
 }
 
-void	test_star(const char *s, int i, va_list list, t_flags *tab)
+void	ft_test_star(const char *s, int i, va_list list, t_flags *tab)
 {
 	int save;
 
@@ -77,7 +77,7 @@ void	test_star(const char *s, int i, va_list list, t_flags *tab)
 	}
 }
 
-char	*get_str_format(const char *s, int *i, va_list list, t_flags *tab)
+char	*ft_get_str_format(const char *s, int *i, va_list list, t_flags *tab)
 {
 	char	*res;
 	char	*temp;
@@ -89,7 +89,7 @@ char	*get_str_format(const char *s, int *i, va_list list, t_flags *tab)
 	res = 0;
 	while (s[*i] != '%' && s[*i] != 'X' && (s[*i] < 'a' || s[*i] > 'z'))
 	{
-		test_star(s, *i, list, tab);
+		ft_test_star(s, *i, list, tab);
 		(*i) += 1;
 	}
 	temp = ft_substr(s, save, *i - save + 1);

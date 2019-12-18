@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/06 00:53:29 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:46:39 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 16:48:12 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		complete_pointer(t_flags tab, va_list lst)
+int		ft_complete_pointer(t_flags tab, va_list lst)
 {
 	char	*temp;
 	int		res;
@@ -25,48 +25,48 @@ int		complete_pointer(t_flags tab, va_list lst)
 		temp = ft_strdup("");
 	}
 	temp = ft_fstrjoin(ft_strdup("0x"), temp);
-	res = hexa_format(tab, temp);
+	res = ft_hexa_format(tab, temp);
 	return (res);
 }
 
-int		complete_str(t_flags tab, va_list lst)
+int		ft_complete_str(t_flags tab, va_list lst)
 {
 	int		res;
 	char	*temp;
 
 	temp = 0;
 	if (tab.c == 'd' || tab.c == 'i')
-		res = int_format(tab, va_arg(lst, int));
+		res = ft_int_format(tab, va_arg(lst, int));
 	else if (tab.c == 'c')
-		res = char_format(tab, (char)va_arg(lst, int));
+		res = ft_char_format(tab, (char)va_arg(lst, int));
 	else if (tab.c == 'u')
-		res = un_format(tab, va_arg(lst, unsigned int));
+		res = ft_un_format(tab, va_arg(lst, unsigned int));
 	else if (tab.c == 'p')
-		res = complete_pointer(tab, lst);
+		res = ft_complete_pointer(tab, lst);
 	else if (tab.c == 'x' || tab.c == 'X')
 	{
 		temp = ft_itoa_base(va_arg(lst, int), "0123456789abcdef");
 		if (tab.c == 'X')
 			ft_strtoupper(&temp);
-		res = hexa_format(tab, temp);
+		res = ft_hexa_format(tab, temp);
 	}
 	else if (tab.c == 's')
-		res = str_format(tab, va_arg(lst, char *));
+		res = ft_str_format(tab, va_arg(lst, char *));
 	else
-		res = char_format(tab, '%');
+		res = ft_char_format(tab, '%');
 	return (res);
 }
 
-int		printf_format(const char *str, int *i, va_list lst)
+int		ft_printf_format(const char *str, int *i, va_list lst)
 {
 	char	*temp;
 	int		res;
 	t_flags	tab;
 
-	tab = init_struct();
-	temp = get_str_format(str, i, lst, &tab);
-	parsing_flags(&tab, temp);
-	res = complete_str(tab, lst);
+	tab = ft_init_struct();
+	temp = ft_get_str_format(str, i, lst, &tab);
+	ft_parsing_flags(&tab, temp);
+	res = ft_complete_str(tab, lst);
 	free(temp);
 	return (res);
 }
@@ -87,7 +87,7 @@ int		ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			res += printf_format(str, &i, list);
+			res += ft_printf_format(str, &i, list);
 		}
 		else
 		{

@@ -6,14 +6,14 @@
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 06:47:41 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:46:35 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 16:59:13 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int				nb_char(unsigned long long nb, int len)
+int				ft_nb_char(unsigned long long nb, int len)
 {
 	int size;
 	int mod;
@@ -41,7 +41,7 @@ char			*ft_itoa_base(int nb, char *base)
 
 	len = ft_strlen(base);
 	temp = nb;
-	size = nb_char(temp, len);
+	size = ft_nb_char(temp, len);
 	if (!(res = ft_calloc((size + 1), sizeof(char))))
 		return (0);
 	while (temp > 0)
@@ -62,7 +62,7 @@ char			*ft_ullitoa_base(unsigned long long nb, char *base)
 	int				size;
 
 	len = ft_strlen(base);
-	size = nb_char(nb, len);
+	size = ft_nb_char(nb, len);
 	if (!(res = ft_calloc((size + 1), sizeof(char))))
 		return (0);
 	if (nb == 0)

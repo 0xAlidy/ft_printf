@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   parsing_flags.c                                  .::    .:/ .      .::   */
+/*   ft_parsing_flags.c                               .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 03:38:47 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 13:46:54 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 17:00:19 by alidy       ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_flags	init_struct(void)
+t_flags	ft_init_struct(void)
 {
 	t_flags	tab;
 
@@ -26,7 +26,7 @@ t_flags	init_struct(void)
 	return (tab);
 }
 
-int		while_function(char *str, int i, t_flags *tab)
+int		ft_while_function(char *str, int i, t_flags *tab)
 {
 	while (str[i] == '0' || str[i] == '-')
 	{
@@ -42,7 +42,7 @@ int		while_function(char *str, int i, t_flags *tab)
 	return (i);
 }
 
-void	parsing_flags(t_flags *tab, char *str)
+void	ft_parsing_flags(t_flags *tab, char *str)
 {
 	int i;
 
@@ -52,7 +52,7 @@ void	parsing_flags(t_flags *tab, char *str)
 		tab->neg = 1;
 		i++;
 	}
-	i = while_function(str, i, tab);
+	i = ft_while_function(str, i, tab);
 	if (str[i] >= '0' && str[i] <= '9')
 		tab->width = ft_atoi(str + i);
 	while ((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '*')
